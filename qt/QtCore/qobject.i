@@ -6,6 +6,7 @@
 
 %import "qobjectdefs.i"
 
+%feature("python:slot", "tp_str", functype="reprfunc") QObject::as_string;
 
 class QObject
 {
@@ -28,5 +29,12 @@ public:
 // int startTimer(int interval, Qt::TimerType timerType = Qt::CoarseTimer);
    void killTimer(int id);
 };
+
+%extend QObject {
+  inline std::string as_string() const 
+  { 
+    return $self->objectName().toStdString(); 
+  }
+}
 
 // vim: set et ts=3 sw=3 sts=3 ft=swig

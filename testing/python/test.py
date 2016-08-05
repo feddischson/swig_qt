@@ -1,10 +1,15 @@
-from qtcore import QObject,QString
+from qtcore import QObject,QString,QLatin1String
 from qtwidgets import QApplication
 
-o =QObject()
-
-s = QString( "this is my object" )
+o = QObject()
 
 app = QApplication.create()
 
-app._exec()
+o.setObjectName( QString( "MyQObject" ) )
+s = o.objectName()
+print( s )
+print( o )
+print( "IsWidgetType: %r" % o.isWidgetType() )
+print( "IsWindowType: %r" % o.isWindowType() )
+
+#app._exec()

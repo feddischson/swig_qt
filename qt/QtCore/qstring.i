@@ -1,33 +1,30 @@
+%include <std_string.i>
+
+%ignore q_static_assert_result161;
+%ignore QString::vsprintf;
+%ignore QString::vasprintf;
+
 %module qstring
 %{
   #include "QtCore/qstring.h"
+  #include "QVector"
 %}
 
+%import "qglobal.i"
 
-class QString
-{
-    inline QString( QLatin1String latin1 );
-    inline void swap(QString &other) Q_DECL_NOTHROW { qSwap(d, other.d); }
-    inline int size() const { return d->size; }
-    inline int count() const { return d->size; }
-    inline int length() const;
-    inline bool isEmpty() const;
-    void resize(int size);
-    void resize(int size, QChar fillChar);
+%feature("python:slot", "tp_str", functype="reprfunc") QString::toStdString;
+%include "QtCore/qstring.h"
 
-    QString &fill(QChar c, int size = -1);
-    void truncate(int pos);
-    void chop(int n);
+//
+//  Note: uisng '%implicitconv QLatin1String' would be nice,
+//        but does not work because of the explicit keyword in QLatin1String.
+//
+%extend QString{
+  QString( const char* & s )
+  {
+    return new QString( QLatin1String( s ) );
+  }
+}
 
-    int capacity() const;
-};
-
-%extend QString
-{
-   inline QString( char* str )
-   {
-      QString( QLatin1String( str  ) );
-   }
-};
 
 // vim: set et ts=3 sw=3 sts=3 ft=swig

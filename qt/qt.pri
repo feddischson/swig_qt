@@ -2,7 +2,7 @@
 
 swig_python {
   SWIG_TARGET = python
-  SWIG_TARGET_FLAGS += -py3 -modern
+  SWIG_TARGET_FLAGS += -py3 -modern -builtin
   INCLUDEPATH += /usr/include/python3.4/ 
 }
 
