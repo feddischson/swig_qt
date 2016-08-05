@@ -1,0 +1,9 @@
+qt/.qmake.stash
+Makefile
+qt/**/*.py
+*_wrap.cxx
+*.so
+*.so.*
+*.o
+
+testing/python/__pycache__
