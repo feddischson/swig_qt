@@ -1,5 +1,5 @@
 from qtcore import QObject,QString,QLatin1String
-from qtwidgets import QApplication
+from qtwidgets import QApplication,QMainWindow
 
 o = QObject()
 
@@ -12,4 +12,14 @@ print( o )
 print( "IsWidgetType: %r" % o.isWidgetType() )
 print( "IsWindowType: %r" % o.isWindowType() )
 
-#app._exec()
+
+w = QMainWindow()
+print( "IsWidgetType: %r" % w.isWidgetType() )
+print( "IsWindowType: %r" % w.isWindowType() )
+w.show()
+w.setWindowTitle( QString( "This is a main-window"))
+
+
+
+
+exit( app._exec() )
