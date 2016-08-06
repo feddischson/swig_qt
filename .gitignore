@@ -7,4 +7,4 @@ qt/**/*.py
 *.so.*
 *.o
 
-testing/python/__pycache__
+__pycache__
