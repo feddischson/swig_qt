@@ -2,6 +2,7 @@ qt/.qmake.stash
 Makefile
 qt/**/*.py
 *_wrap.cxx
+*_wrap.h
 *.so
 *.so.*
 *.o

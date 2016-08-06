@@ -1,12 +1,14 @@
 
-%module qobject
+%module(directors="1") qobject
 %{
     #include "QtCore/qobject.h"
 %}
 
-%import "qobjectdefs.i"
-
 %feature("python:slot", "tp_str", functype="reprfunc") QObject::as_string;
+%feature("director") QObject;
+
+%import "qobjectdefs.i"
+%import "qmetaobject.i"
 
 class QObject
 {
