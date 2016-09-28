@@ -15,26 +15,23 @@
 
 %include "QtWidgets/qapplication.h"
 
-%extend QCoreApplication{
 
+
+
+// todo: this can be removed if SWIG handles somehow int& of the ctor.
+%extend QCoreApplication{
   public:
-    static QCoreApplication* create( void )
+    static QCoreApplication * create( int argc, char **argv )
     {
-       int s = 0;
-       char ** tmp = 0;
-       return new QCoreApplication( s, tmp );
+      return new QCoreApplication( argc, argv );
     }
 }
 
-
 %extend QApplication{
-
   public:
-    static QApplication * create( void )
+    static QApplication * create( int argc, char **argv )
     {
-       int s = 0;
-       char ** tmp = 0;
-       return new QApplication( s, tmp );
+      return new QApplication( argc, argv );
     }
 }
 

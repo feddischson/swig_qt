@@ -1,3 +1,4 @@
+import sys
 from qtcore import QObject,QString,QLatin1String,QMetaObject,QByteArray
 from qtwidgets import QApplication,QMainWindow,QPushButton
 
@@ -15,9 +16,9 @@ o = QObject()
 m = MyCustomQtClass( "Fancy Class" )
 print( "Hey, this also works: It is a " + str( m ) )
 
-# create the app instance
-app = QApplication.create()
 
+# create the app instance
+app = QApplication.create( len( sys.argv ), sys.argv )
 
 o.setObjectName( QString( "MyQObject" ) )
 s = o.objectName()
